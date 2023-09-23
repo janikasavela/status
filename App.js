@@ -1,14 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import Constants from 'expo-constants';
-import { Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'; 
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
+import HomeScreen from './HomeScreen';
+import SecondScreen from './SecondScreen';
 
 export default function App() {
+
+const Stack = createNativeStackNavigator();
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto"
-      hidden = {true} />
-      </SafeAreaView>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Home'>
+          <Stack.Screen
+          name='home'
+          component={HomeScreen}
+          options={{
+            title: 'Home',
+            headerTitle: 'Home'
+        }}
+          />
+          <Stack.Screen
+          name='Second'
+          component={SecondScreen}
+          option = {{
+            title: 'Second',
+            headerTitle: 'Second'
+          }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 
